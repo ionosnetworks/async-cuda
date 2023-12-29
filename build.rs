@@ -20,7 +20,11 @@ fn main() {
         "cargo:rustc-link-search={}",
         cuda_path.join("lib").join("x64").display()
     );
-    println!("cargo:rustc-link-lib=cudart");
+    if cfg!(feature = "static") {
+        println!("cargo:rustc-link-lib=static=cudart_static");
+    } else {
+        println!("cargo:rustc-link-lib=cudart");
+    }
     #[cfg(feature = "npp")]
     link_npp_libraries();
 }

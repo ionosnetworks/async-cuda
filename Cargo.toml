@@ -28,6 +28,7 @@ tokio-test = { version = "0.4" }
 cpp_build = "0.5"
 
 [features]
+static = []
 npp = []
 npp-unstable = []
 
